@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8" />
+    <title>Dicee</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Indie+Flower|Lobster"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <h1>Refresh Me</h1>
+
+      <div class="dice">
+        <p>Player 1</p>
+        <img class="img1" src="./images/dice6.png" />
+      </div>
+
+      <div class="dice">
+        <p>Player 2</p>
+        <img class="img2" src="./images/dice6.png" />
+      </div> <br>
+      <button id="refreshButton">Roll Dice!</button>
+    </div>
+
+
+    <script>
+      let randomNumber1 = Math.floor (Math.random()*6)+1;
+      
+      let randomDiceImage = "dice" + randomNumber1 + ".png";
+      let randomImageSource = "images/" + randomDiceImage;
+      let image1=document.querySelectorAll("img")[0];
+      image1.setAttribute("src", randomImageSource);
+
+      let randomNumber2 = Math.floor(Math.random()*6)+1;
+      let randomImageSource2 = "images/dice"+ randomNumber2+".png";
+      document.querySelectorAll("img")[1].setAttribute("src", randomImageSource2);
+
+      if (randomNumber1 > randomNumber2){
+        document.querySelector("h1").innerHTML="Player 1 win";
+      } else if(randomNumber2>randomNumber1){
+        document.querySelector("h1").innerHTML = "Player 2 win";
+      }else{
+        document.querySelector("h1").innerHTML = "Draw";
+      }
+
+      document.getElementById("refreshButton").addEventListener("click", function() {
+  location.reload(); // Reloads the entire page
+});
+    </script>
+  </body>
+</html>
